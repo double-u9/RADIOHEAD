@@ -1,18 +1,12 @@
-<div align="center">
-  <h1>Radiohead Interactive Discography</h1>
-  
-  <p>
-    <b> A cinematic, immersive web experience dedicated to the discography of Radiohead.</b>
-  </p>
+# Radiohead Interactive Discography
 
-  <p>
-  <a href="#"><img src="https://img.shields.io/badge/Radiohead-Immersive%20Experience-black?style=for-the-badge&logo=next.js" alt="Radiohead App Banner" /></a>
-  <a href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" /></a>
-  <a href="https://nextjs.org/"><img src="https://img.shields.io/badge/Next.js_16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" alt="Next.js" /></a>
-  <a href="https://tailwindcss.com/"><img src="https://img.shields.io/badge/Tailwind_CSS_4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" /></a>
-  <a href="https://www.framer.com/motion/"><img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" /></a>
-</p>
-</div>
+> A cinematic, immersive web experience dedicated to the discography of Radiohead.
+
+![Radiohead App Banner](https://img.shields.io/badge/Radiohead-Immersive%20Experience-black?style=for-the-badge&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js_16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS_4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
 
 ## 1. Project Overview
 
