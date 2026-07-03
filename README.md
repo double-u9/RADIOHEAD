@@ -2,7 +2,7 @@
   <h1>Radiohead Interactive Discography</h1>
   
   <p>
-    <b>> A cinematic, immersive web experience dedicated to the discography of Radiohead.</b>
+    <b> A cinematic, immersive web experience dedicated to the discography of Radiohead.</b>
   </p>
 
   <p>
