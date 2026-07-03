@@ -1,0 +1,380 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Inter", system-ui, sans-serif;
+
+  --color-bg: #000000;
+  --color-bg-elevated: #0a0a0a;
+  --color-bg-card: #111111;
+  --color-bg-hover: #181818;
+  --color-bg-glass: rgba(10, 10, 10, 0.5);
+  --color-border: rgba(255, 255, 255, 0.04);
+  --color-border-hover: rgba(255, 255, 255, 0.1);
+
+  --color-text-primary: #f8f8f8;
+  --color-text-secondary: #a0a0a0;
+  --color-text-muted: #666666;
+
+  --color-accent: #ffffff;
+}
+
+/* ─── Base ──────────────────────────────────────────── */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: #000;
+  color: var(--color-text-primary);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ─── Custom Cursor ────────────────────────────────── */
+@media (pointer: fine) {
+  body.custom-cursor {
+    cursor: none;
+  }
+  body.custom-cursor a,
+  body.custom-cursor button,
+  body.custom-cursor [role="button"],
+  body.custom-cursor input,
+  body.custom-cursor select,
+  body.custom-cursor textarea {
+    cursor: none;
+  }
+}
+
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  mix-blend-mode: difference;
+  transition: transform 0.15s ease-out, opacity 0.3s;
+}
+
+.cursor-dot.hovering {
+  transform: scale(5);
+  opacity: 0.5;
+}
+
+.cursor-dot.hidden {
+  opacity: 0;
+  transform: scale(0);
+}
+
+/* ─── Hide dev indicators ──────────────────────────── */
+nextjs-portal,
+[data-nextjs-toast],
+#__next-build-watcher,
+#next-route-announcer {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* ─── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ─── Selection ─────────────────────────────────────── */
+::selection {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+/* ─── Grain Overlay ─────────────────────────────────── */
+.grain-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  animation: grain 0.5s steps(1) infinite;
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  30% { transform: translate(3%, -15%); }
+  50% { transform: translate(12%, 9%); }
+  70% { transform: translate(9%, 4%); }
+  90% { transform: translate(-1%, 7%); }
+}
+
+/* ─── Glass Effect ──────────────────────────────────── */
+.glass {
+  background: rgba(12, 12, 12, 0.6);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+}
+
+.glass-strong {
+  background: rgba(8, 8, 8, 0.9);
+  backdrop-filter: blur(40px) saturate(200%);
+  -webkit-backdrop-filter: blur(40px) saturate(200%);
+}
+
+/* ─── Text Reveal Animations ───────────────────────── */
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes lineGrow {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-reveal-up {
+  animation: revealUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease forwards;
+}
+
+.animate-line-grow {
+  animation: lineGrow 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform-origin: left;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ─── Fullscreen Section ───────────────────────────── */
+.section-fullscreen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── Horizontal Scroll ────────────────────────────── */
+.horizontal-scroll {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 2rem;
+}
+
+.horizontal-scroll > * {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+}
+
+/* ─── Scroll Indicator ─────────────────────────────── */
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: translateY(0); }
+  50% { opacity: 0.8; transform: translateY(8px); }
+}
+
+.scroll-indicator {
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+/* ─── Range Input (Seek / Volume) ───────────────────── */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  height: 4px;
+}
+
+input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: #fff;
+  margin-top: -4px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+input[type="range"]:hover::-webkit-slider-thumb {
+  opacity: 1;
+}
+
+input[type="range"]::-moz-range-track {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: #fff;
+  border: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+  opacity: 1;
+}
+
+/* ─── Player Bottom Padding ─────────────────────────── */
+.has-player {
+  padding-bottom: 96px;
+}
+
+/* ─── Text Gradient ─────────────────────────────────── */
+.text-gradient {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0.6) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ─── Hide scrollbar utility ────────────────────────── */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* ─── Hover underline for nav ──────────────────────── */
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: #fff;
+  transition: width 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* ─── Vinyl Spin ────────────────────────────────────── */
+@keyframes vinyl-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.vinyl-spinning {
+  animation: vinyl-spin 3s linear infinite;
+}
+
+.vinyl-paused {
+  animation-play-state: paused;
+}
+
+/* ─── Ambient Glow ──────────────────────────────────── */
+.ambient-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  pointer-events: none;
+  transition: all 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ─── Skeleton ──────────────────────────────────────── */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.04) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.04) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+  border-radius: 8px;
+}

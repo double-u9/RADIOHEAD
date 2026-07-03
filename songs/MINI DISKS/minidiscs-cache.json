@@ -1,0 +1,146 @@
+[
+  {
+    "title": "MD111",
+    "duration": "70:47",
+    "durationSeconds": 4247,
+    "fileName": "Radiohead - MINIDISCS - 01 MD111.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD111",
+    "number": 1
+  },
+  {
+    "title": "MD112",
+    "duration": "61:27",
+    "durationSeconds": 3687,
+    "fileName": "Radiohead - MINIDISCS - 02 MD112.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD112",
+    "number": 2
+  },
+  {
+    "title": "MD113",
+    "duration": "65:08",
+    "durationSeconds": 3908,
+    "fileName": "Radiohead - MINIDISCS - 03 MD113.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD113",
+    "number": 3
+  },
+  {
+    "title": "MD114",
+    "duration": "57:21",
+    "durationSeconds": 3441,
+    "fileName": "Radiohead - MINIDISCS - 04 MD114.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD114",
+    "number": 4
+  },
+  {
+    "title": "MD115",
+    "duration": "57:04",
+    "durationSeconds": 3424,
+    "fileName": "Radiohead - MINIDISCS - 05 MD115.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD115",
+    "number": 5
+  },
+  {
+    "title": "MD116",
+    "duration": "25:57",
+    "durationSeconds": 1557,
+    "fileName": "Radiohead - MINIDISCS - 06 MD116.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD116",
+    "number": 6
+  },
+  {
+    "title": "MD117",
+    "duration": "55:28",
+    "durationSeconds": 3328,
+    "fileName": "Radiohead - MINIDISCS - 07 MD117.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD117",
+    "number": 7
+  },
+  {
+    "title": "MD118",
+    "duration": "57:03",
+    "durationSeconds": 3423,
+    "fileName": "Radiohead - MINIDISCS - 08 MD118.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD118",
+    "number": 8
+  },
+  {
+    "title": "MD119",
+    "duration": "53:37",
+    "durationSeconds": 3217,
+    "fileName": "Radiohead - MINIDISCS - 09 MD119.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD119",
+    "number": 9
+  },
+  {
+    "title": "MD120",
+    "duration": "58:17",
+    "durationSeconds": 3497,
+    "fileName": "Radiohead - MINIDISCS - 10 MD120.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD120",
+    "number": 10
+  },
+  {
+    "title": "MD121",
+    "duration": "60:21",
+    "durationSeconds": 3621,
+    "fileName": "Radiohead - MINIDISCS - 11 MD121.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD121",
+    "number": 11
+  },
+  {
+    "title": "MD122",
+    "duration": "73:13",
+    "durationSeconds": 4393,
+    "fileName": "Radiohead - MINIDISCS - 12 MD122.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD122",
+    "number": 12
+  },
+  {
+    "title": "MD123",
+    "duration": "17:52",
+    "durationSeconds": 1072,
+    "fileName": "Radiohead - MINIDISCS - 13 MD123.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD123",
+    "number": 13
+  },
+  {
+    "title": "MD124",
+    "duration": "72:22",
+    "durationSeconds": 4342,
+    "fileName": "Radiohead - MINIDISCS - 14 MD124.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD124",
+    "number": 14
+  },
+  {
+    "title": "MD125",
+    "duration": "56:10",
+    "durationSeconds": 3370,
+    "fileName": "Radiohead - MINIDISCS - 15 MD125.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD125",
+    "number": 15
+  },
+  {
+    "title": "MD126",
+    "duration": "68:04",
+    "durationSeconds": 4084,
+    "fileName": "Radiohead - MINIDISCS - 16 MD126.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD126",
+    "number": 16
+  },
+  {
+    "title": "MD127",
+    "duration": "26:49",
+    "durationSeconds": 1609,
+    "fileName": "Radiohead - MINIDISCS - 17 MD127.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD127",
+    "number": 17
+  },
+  {
+    "title": "MD128",
+    "duration": "41:52",
+    "durationSeconds": 2512,
+    "fileName": "Radiohead - MINIDISCS - 18 MD128.mp3",
+    "coverPath": "/api/minidiscs/artwork?id=MD128",
+    "number": 18
+  }
+]
