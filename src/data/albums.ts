@@ -5,7 +5,7 @@ export const albums: Album[] = [
     id: "pablo-honey",
     title: "Pablo Honey",
     year: 1993,
-    folderName: "1. Pablo Honey (1993)",
+    folderName: "1993 - Pablo Honey -Album",
     trackCount: 12,
     coverPath: "/covers/pablo-honey.jpg",
     accentColor: "hsl(40, 60%, 45%)",
@@ -19,7 +19,7 @@ export const albums: Album[] = [
       {
         number: 1,
         title: "You",
-        fileName: "1. You.mp3",
+        fileName: "01 - You [FLAC][862 kbps].flac",
         duration: "3:29",
         durationSeconds: 209,
         description:
@@ -32,7 +32,7 @@ export const albums: Album[] = [
       {
         number: 2,
         title: "Creep",
-        fileName: "2. Creep.mp3",
+        fileName: "02 - Creep [FLAC][891 kbps].flac",
         duration: "3:56",
         durationSeconds: 236,
         description:
@@ -49,7 +49,7 @@ export const albums: Album[] = [
       {
         number: 3,
         title: "How Do You?",
-        fileName: "3. How Do You.mp3",
+        fileName: "03 - How Do You [FLAC][955 kbps].flac",
         duration: "2:12",
         durationSeconds: 132,
         description:
@@ -58,7 +58,7 @@ export const albums: Album[] = [
       {
         number: 4,
         title: "Stop Whispering",
-        fileName: "4. Stop Whispering.mp3",
+        fileName: "04 - Stop Whispering [FLAC][877 kbps].flac",
         duration: "5:26",
         durationSeconds: 326,
         description:
@@ -70,7 +70,7 @@ export const albums: Album[] = [
       {
         number: 5,
         title: "Thinking About You",
-        fileName: "5. Thinking About You.mp3",
+        fileName: "05 - Thinking About You [FLAC][868 kbps].flac",
         duration: "2:41",
         durationSeconds: 161,
         description:
@@ -79,7 +79,7 @@ export const albums: Album[] = [
       {
         number: 6,
         title: "Anyone Can Play Guitar",
-        fileName: "6. Anyone Can Play Guitar.mp3",
+        fileName: "06 - Anyone Can Play Guitar [FLAC][957 kbps].flac",
         duration: "3:38",
         durationSeconds: 218,
         description:
@@ -92,7 +92,7 @@ export const albums: Album[] = [
       {
         number: 7,
         title: "Ripcord",
-        fileName: "7. Ripcord.mp3",
+        fileName: "07 - Ripcord [FLAC][955 kbps].flac",
         duration: "3:10",
         durationSeconds: 190,
         description: "A driving, kinetic track about escape and free-falling through life.",
@@ -100,7 +100,7 @@ export const albums: Album[] = [
       {
         number: 8,
         title: "Vegetable",
-        fileName: "8. Vegetable.mp3",
+        fileName: "08 - Vegetable [FLAC][966 kbps].flac",
         duration: "3:13",
         durationSeconds: 193,
         description: "A self-deprecating song about feeling empty and disconnected, with jagged guitar work.",
@@ -108,7 +108,7 @@ export const albums: Album[] = [
       {
         number: 9,
         title: "Prove Yourself",
-        fileName: "9. Prove Yourself.mp3",
+        fileName: "09 - Prove Yourself [FLAC][869 kbps].flac",
         duration: "2:25",
         durationSeconds: 145,
         description:
@@ -120,7 +120,7 @@ export const albums: Album[] = [
       {
         number: 10,
         title: "I Can't",
-        fileName: "10. I Can_t.mp3",
+        fileName: "10 - I Can’t [FLAC][964 kbps].flac",
         duration: "4:13",
         durationSeconds: 253,
         description: "A moody, mid-tempo track exploring frustration and emotional paralysis.",
@@ -128,7 +128,7 @@ export const albums: Album[] = [
       {
         number: 11,
         title: "Lurgee",
-        fileName: "11. Lurgee.mp3",
+        fileName: "11 - Lurgee [FLAC][916 kbps].flac",
         duration: "3:08",
         durationSeconds: 188,
         description:
@@ -137,7 +137,7 @@ export const albums: Album[] = [
       {
         number: 12,
         title: "Blow Out",
-        fileName: "12. Blow Out.mp3",
+        fileName: "12 - Blow Out [FLAC][955 kbps].flac",
         duration: "4:40",
         durationSeconds: 280,
         description:
@@ -152,7 +152,7 @@ export const albums: Album[] = [
     id: "the-bends",
     title: "The Bends",
     year: 1995,
-    folderName: "2. The Bend (1995)",
+    folderName: "1995 - The Bends -Album",
     trackCount: 12,
     coverPath: "/covers/the-bends.jpg",
     accentColor: "hsl(210, 40%, 50%)",
@@ -166,7 +166,7 @@ export const albums: Album[] = [
       {
         number: 1,
         title: "Planet Telex",
-        fileName: "1, Planet Telex.mp3",
+        fileName: "01 - Planet Telex [FLAC][981 kbps].flac",
         duration: "4:19",
         durationSeconds: 259,
         description:
@@ -181,7 +181,7 @@ export const albums: Album[] = [
       {
         number: 2,
         title: "The Bends",
-        fileName: "2. The Bends.mp3",
+        fileName: "02 - The Bends [FLAC][988 kbps].flac",
         duration: "4:06",
         durationSeconds: 246,
         description:
@@ -190,7 +190,7 @@ export const albums: Album[] = [
       {
         number: 3,
         title: "High and Dry",
-        fileName: "3. High and Dry.mp3",
+        fileName: "03 - High and Dry [FLAC][975 kbps].flac",
         duration: "4:17",
         durationSeconds: 257,
         description:
@@ -203,7 +203,7 @@ export const albums: Album[] = [
       {
         number: 4,
         title: "Fake Plastic Trees",
-        fileName: "4. Fake Plastic Trees.mp3",
+        fileName: "04 - Fake Plastic Trees [FLAC][864 kbps].flac",
         duration: "4:50",
         durationSeconds: 290,
         description:
@@ -219,7 +219,7 @@ export const albums: Album[] = [
       {
         number: 5,
         title: "Bones",
-        fileName: "5. Bones.mp3",
+        fileName: "05 - Bones [FLAC][1006 kbps].flac",
         duration: "3:09",
         durationSeconds: 189,
         description:
@@ -228,7 +228,7 @@ export const albums: Album[] = [
       {
         number: 6,
         title: "(Nice Dream)",
-        fileName: "6. [Nice Dream].mp3",
+        fileName: "06 - (Nice Dream) [FLAC][966 kbps].flac",
         duration: "3:53",
         durationSeconds: 233,
         description:
@@ -237,7 +237,7 @@ export const albums: Album[] = [
       {
         number: 7,
         title: "Just",
-        fileName: "7. Just.mp3",
+        fileName: "07 - Just [FLAC][1050 kbps].flac",
         duration: "3:54",
         durationSeconds: 234,
         description:
@@ -250,7 +250,7 @@ export const albums: Album[] = [
       {
         number: 8,
         title: "My Iron Lung",
-        fileName: "8. My Iron Lung.mp3",
+        fileName: "08 - My Iron Lung [FLAC][964 kbps].flac",
         duration: "4:36",
         durationSeconds: 276,
         description:
@@ -263,7 +263,7 @@ export const albums: Album[] = [
       {
         number: 9,
         title: "Bullet Proof..I Wish I Was",
-        fileName: "9. Bullet Proof _. I Wish I Was.mp3",
+        fileName: "09 - Bullet Proof.I Wish I Was [FLAC][903 kbps].flac",
         duration: "3:28",
         durationSeconds: 208,
         description:
@@ -272,7 +272,7 @@ export const albums: Album[] = [
       {
         number: 10,
         title: "Black Star",
-        fileName: "10. Black Star.mp3",
+        fileName: "10 - Black Star [FLAC][984 kbps].flac",
         duration: "4:07",
         durationSeconds: 247,
         description:
@@ -281,7 +281,7 @@ export const albums: Album[] = [
       {
         number: 11,
         title: "Sulk",
-        fileName: "11. Sulk.mp3",
+        fileName: "11 - Sulk [FLAC][1031 kbps].flac",
         duration: "3:42",
         durationSeconds: 222,
         description:
@@ -293,7 +293,7 @@ export const albums: Album[] = [
       {
         number: 12,
         title: "Street Spirit (Fade Out)",
-        fileName: "12. Street Spirit (Fade Out).mp3",
+        fileName: "12 - Street Spirit (Fade Out) [FLAC][871 kbps].flac",
         duration: "4:12",
         durationSeconds: 252,
         description:
@@ -310,7 +310,7 @@ export const albums: Album[] = [
     id: "ok-computer",
     title: "OK Computer",
     year: 1997,
-    folderName: "3. OK Computer (1997)",
+    folderName: "1997 - OK Computer -Album",
     trackCount: 12,
     coverPath: "/covers/ok-computer.jpg",
     accentColor: "hsl(190, 25%, 55%)",
@@ -324,7 +324,7 @@ export const albums: Album[] = [
       {
         number: 1,
         title: "Airbag",
-        fileName: "1. Airbag (Remastered).mp3",
+        fileName: "01 - Airbag [FLAC][991 kbps].flac",
         duration: "4:44",
         durationSeconds: 284,
         description:
@@ -340,7 +340,7 @@ export const albums: Album[] = [
       {
         number: 2,
         title: "Paranoid Android",
-        fileName: "2. Paranoid Android (Remastered).mp3",
+        fileName: "02 - Paranoid Android [FLAC][992 kbps].flac",
         duration: "6:23",
         durationSeconds: 383,
         description:
@@ -357,7 +357,7 @@ export const albums: Album[] = [
       {
         number: 3,
         title: "Subterranean Homesick Alien",
-        fileName: "3. Subterranean Homesick Alien (Remastered).mp3",
+        fileName: "03 - Subterranean Homesick Alien [FLAC][951 kbps].flac",
         duration: "4:27",
         durationSeconds: 267,
         description:
@@ -370,7 +370,7 @@ export const albums: Album[] = [
       {
         number: 4,
         title: "Exit Music (For a Film)",
-        fileName: "4. Exit Music (For A Film).mp3",
+        fileName: "04 - Exit Music (for a Film) [FLAC][822 kbps].flac",
         duration: "4:24",
         durationSeconds: 264,
         description:
@@ -386,7 +386,7 @@ export const albums: Album[] = [
       {
         number: 5,
         title: "Let Down",
-        fileName: "5. Let Down (Remastered).mp3",
+        fileName: "05 - Let Down [FLAC][992 kbps].flac",
         duration: "4:59",
         durationSeconds: 299,
         description:
@@ -400,7 +400,7 @@ export const albums: Album[] = [
       {
         number: 6,
         title: "Karma Police",
-        fileName: "6. Karma Police (Remastered).mp3",
+        fileName: "06 - Karma Police [FLAC][964 kbps].flac",
         duration: "4:21",
         durationSeconds: 261,
         description:
@@ -414,7 +414,7 @@ export const albums: Album[] = [
       {
         number: 7,
         title: "Fitter Happier",
-        fileName: "7. Fitter Happier (Remastered).mp3",
+        fileName: "07 - Fitter Happier [FLAC][760 kbps].flac",
         duration: "1:57",
         durationSeconds: 117,
         description:
@@ -428,7 +428,7 @@ export const albums: Album[] = [
       {
         number: 8,
         title: "Electioneering",
-        fileName: "8. Electioneering (Remastered).mp3",
+        fileName: "08 - Electioneering [FLAC][1009 kbps].flac",
         duration: "3:50",
         durationSeconds: 230,
         description:
@@ -441,7 +441,7 @@ export const albums: Album[] = [
       {
         number: 9,
         title: "Climbing Up the Walls",
-        fileName: "9. Climbing Up the Walls (Remastered).mp3",
+        fileName: "09 - Climbing Up the Walls [FLAC][916 kbps].flac",
         duration: "4:45",
         durationSeconds: 285,
         description:
@@ -455,7 +455,7 @@ export const albums: Album[] = [
       {
         number: 10,
         title: "No Surprises",
-        fileName: "10. No Surprises (Remastered).mp3",
+        fileName: "10 - No Surprises [FLAC][891 kbps].flac",
         duration: "3:48",
         durationSeconds: 228,
         description:
@@ -469,7 +469,7 @@ export const albums: Album[] = [
       {
         number: 11,
         title: "Lucky",
-        fileName: "11. Lucky (Remastered).mp3",
+        fileName: "11 - Lucky [FLAC][873 kbps].flac",
         duration: "4:19",
         durationSeconds: 259,
         description:
@@ -483,7 +483,7 @@ export const albums: Album[] = [
       {
         number: 12,
         title: "The Tourist",
-        fileName: "12. The Tourist (Remastered).mp3",
+        fileName: "12 - The Tourist [FLAC][894 kbps].flac",
         duration: "5:24",
         durationSeconds: 324,
         description:
@@ -500,7 +500,7 @@ export const albums: Album[] = [
     id: "kid-a",
     title: "Kid A",
     year: 2000,
-    folderName: "4. Kid A (2000)",
+    folderName: "2000 - Kid A -Album",
     trackCount: 10,
     coverPath: "/covers/kid-a.jpg",
     accentColor: "hsl(200, 50%, 55%)",
@@ -515,7 +515,7 @@ export const albums: Album[] = [
       {
         number: 1,
         title: "Everything in Its Right Place",
-        fileName: "1. Everything In Its Right Place.mp3",
+        fileName: "01 - Everything in Its Right Place [FLAC][847 kbps].flac",
         duration: "4:11",
         durationSeconds: 251,
         description:
@@ -529,7 +529,7 @@ export const albums: Album[] = [
       {
         number: 2,
         title: "Kid A",
-        fileName: "2. Kid A.mp3",
+        fileName: "02 - Kid A [FLAC][797 kbps].flac",
         duration: "4:44",
         durationSeconds: 284,
         description:
@@ -543,7 +543,7 @@ export const albums: Album[] = [
       {
         number: 3,
         title: "The National Anthem",
-        fileName: "3. The National Anthem.mp3",
+        fileName: "03 - The National Anthem [FLAC][918 kbps].flac",
         duration: "5:51",
         durationSeconds: 351,
         description:
@@ -557,7 +557,7 @@ export const albums: Album[] = [
       {
         number: 4,
         title: "How to Disappear Completely",
-        fileName: "4. How to Disappear Completely.mp3",
+        fileName: "04 - How to Disappear Completely [FLAC][887 kbps].flac",
         duration: "5:55",
         durationSeconds: 355,
         description:
@@ -571,7 +571,7 @@ export const albums: Album[] = [
       {
         number: 5,
         title: "Treefingers",
-        fileName: "5. Treefingers.mp3",
+        fileName: "05 - Treefingers [FLAC][596 kbps].flac",
         duration: "3:42",
         durationSeconds: 222,
         description:
@@ -584,7 +584,7 @@ export const albums: Album[] = [
       {
         number: 6,
         title: "Optimistic",
-        fileName: "6. Optimistic.mp3",
+        fileName: "06 - Optimistic [FLAC][903 kbps].flac",
         duration: "5:15",
         durationSeconds: 315,
         description:
@@ -597,7 +597,7 @@ export const albums: Album[] = [
       {
         number: 7,
         title: "In Limbo",
-        fileName: "7. In Limbo.mp3",
+        fileName: "07 - In Limbo [FLAC][925 kbps].flac",
         duration: "3:31",
         durationSeconds: 211,
         description:
@@ -606,7 +606,7 @@ export const albums: Album[] = [
       {
         number: 8,
         title: "Idioteque",
-        fileName: "8. Idioteque.mp3",
+        fileName: "08 - Idioteque [FLAC][1005 kbps].flac",
         duration: "5:09",
         durationSeconds: 309,
         description:
@@ -621,7 +621,7 @@ export const albums: Album[] = [
       {
         number: 9,
         title: "Morning Bell",
-        fileName: "9. Morning Bell.mp3",
+        fileName: "09 - Morning Bell [FLAC][864 kbps].flac",
         duration: "4:35",
         durationSeconds: 275,
         description:
@@ -634,7 +634,7 @@ export const albums: Album[] = [
       {
         number: 10,
         title: "Motion Picture Soundtrack",
-        fileName: "10. Motion Picture Soundtrack.mp3",
+        fileName: "10 - Motion Picture Soundtrack [FLAC][447 kbps].flac",
         duration: "3:20",
         durationSeconds: 200,
         description:
@@ -652,7 +652,7 @@ export const albums: Album[] = [
     id: "amnesiac",
     title: "Amnesiac",
     year: 2001,
-    folderName: "5. Amnesiac (2001)",
+    folderName: "2001 - Amnesiac -Album",
     trackCount: 11,
     coverPath: "/covers/amnesiac.jpg",
     accentColor: "hsl(0, 60%, 40%)",
@@ -667,7 +667,7 @@ export const albums: Album[] = [
       {
         number: 1,
         title: "Packt Like Sardines in a Crushd Tin Box",
-        fileName: "1. Packt Like Sardines In a Crushd Tin Box.mp3",
+        fileName: "0101 - Packt Like Sardines in a Crushd Tin Box [FLAC][837 kbps].flac",
         duration: "4:00",
         durationSeconds: 240,
         description:
@@ -676,7 +676,7 @@ export const albums: Album[] = [
       {
         number: 2,
         title: "Pyramid Song",
-        fileName: "2. Pyramid Song.mp3",
+        fileName: "0102 - Pyramid Song [FLAC][857 kbps].flac",
         duration: "4:49",
         durationSeconds: 289,
         description:
@@ -691,7 +691,7 @@ export const albums: Album[] = [
       {
         number: 3,
         title: "Pulk/Pull Revolving Doors",
-        fileName: "3. Pulk_Pull Revolving Doors.mp3",
+        fileName: "0103 - Pulk+Pull Revolving Doors [FLAC][881 kbps].flac",
         duration: "4:07",
         durationSeconds: 247,
         description:
@@ -700,7 +700,7 @@ export const albums: Album[] = [
       {
         number: 4,
         title: "You and Whose Army?",
-        fileName: "4. You And Whose Army_.mp3",
+        fileName: "0104 - You and Whose Army [FLAC][782 kbps].flac",
         duration: "3:11",
         durationSeconds: 191,
         description:
@@ -714,7 +714,7 @@ export const albums: Album[] = [
       {
         number: 5,
         title: "I Might Be Wrong",
-        fileName: "5. I Might Be Wrong.mp3",
+        fileName: "0105 - I Might Be Wrong [FLAC][833 kbps].flac",
         duration: "4:54",
         durationSeconds: 294,
         description:
@@ -723,7 +723,7 @@ export const albums: Album[] = [
       {
         number: 6,
         title: "Knives Out",
-        fileName: "6. Knives Out.mp3",
+        fileName: "0106 - Knives Out [FLAC][1023 kbps].flac",
         duration: "4:15",
         durationSeconds: 255,
         description:
@@ -737,7 +737,7 @@ export const albums: Album[] = [
       {
         number: 7,
         title: "Morning Bell/Amnesiac",
-        fileName: "7. Morning Bell_Amnesiac.mp3",
+        fileName: "0107 - Morning Bell+Amnesiac [FLAC][969 kbps].flac",
         duration: "3:14",
         durationSeconds: 194,
         description:
@@ -750,7 +750,7 @@ export const albums: Album[] = [
       {
         number: 8,
         title: "Dollars and Cents",
-        fileName: "8. Dollars and Cents.mp3",
+        fileName: "0108 - Dollars + Cents [FLAC][998 kbps].flac",
         duration: "4:52",
         durationSeconds: 292,
         description:
@@ -759,7 +759,7 @@ export const albums: Album[] = [
       {
         number: 9,
         title: "Hunting Bears",
-        fileName: "9. Hunting Bears.mp3",
+        fileName: "0109 - Hunting Bears [FLAC][697 kbps].flac",
         duration: "2:01",
         durationSeconds: 121,
         description:
@@ -768,7 +768,7 @@ export const albums: Album[] = [
       {
         number: 10,
         title: "Like Spinning Plates",
-        fileName: "10. Like Spinning Plates.mp3",
+        fileName: "0110 - Like Spinning Plates [FLAC][852 kbps].flac",
         duration: "3:57",
         durationSeconds: 237,
         description:
@@ -782,7 +782,7 @@ export const albums: Album[] = [
       {
         number: 11,
         title: "Life in a Glasshouse",
-        fileName: "12. Life In a Glasshouse.mp3",
+        fileName: "0111 - Life in a Glasshouse [FLAC][862 kbps].flac",
         duration: "4:34",
         durationSeconds: 274,
         description:
@@ -799,7 +799,7 @@ export const albums: Album[] = [
     id: "hail-to-the-thief",
     title: "Hail to the Thief",
     year: 2003,
-    folderName: "6. Hail to the Thief (2003)",
+    folderName: "2003 - Hail to the Thief -Album",
     trackCount: 14,
     coverPath: "/covers/hail-to-the-thief.jpg",
     accentColor: "hsl(50, 70%, 55%)",
@@ -813,7 +813,7 @@ export const albums: Album[] = [
       {
         number: 1,
         title: "2 + 2 = 5",
-        fileName: "1. 2   2 _ 5.mp3",
+        fileName: "01 - 2 + 2 = 5 [FLAC][942 kbps].flac",
         duration: "3:19",
         durationSeconds: 199,
         description:
@@ -827,7 +827,7 @@ export const albums: Album[] = [
       {
         number: 2,
         title: "Sit Down. Stand Up.",
-        fileName: "2. Sit Down. Stand Up.mp3",
+        fileName: "02 - Sit Down, Stand Up [FLAC][919 kbps].flac",
         duration: "4:19",
         durationSeconds: 259,
         description:
@@ -836,7 +836,7 @@ export const albums: Album[] = [
       {
         number: 3,
         title: "Sail to the Moon",
-        fileName: "3. Sail To The Moon.mp3",
+        fileName: "03 - Sail to the Moon [FLAC][796 kbps].flac",
         duration: "4:18",
         durationSeconds: 258,
         description:
@@ -849,7 +849,7 @@ export const albums: Album[] = [
       {
         number: 4,
         title: "Backdrifts",
-        fileName: "4. Backdrifts.mp3",
+        fileName: "04 - Backdrifts [FLAC][933 kbps].flac",
         duration: "5:22",
         durationSeconds: 322,
         description:
@@ -858,7 +858,7 @@ export const albums: Album[] = [
       {
         number: 5,
         title: "Go to Sleep",
-        fileName: "5. Go To Sleep.mp3",
+        fileName: "05 - Go to Sleep [FLAC][1033 kbps].flac",
         duration: "3:21",
         durationSeconds: 201,
         description:
@@ -867,7 +867,7 @@ export const albums: Album[] = [
       {
         number: 6,
         title: "Where I End and You Begin",
-        fileName: "6. Where I End and You Begin.mp3",
+        fileName: "06 - Where I End and You Begin [FLAC][933 kbps].flac",
         duration: "4:29",
         durationSeconds: 269,
         description:
@@ -880,7 +880,7 @@ export const albums: Album[] = [
       {
         number: 7,
         title: "We Suck Young Blood",
-        fileName: "7. We Suck Young Blood.mp3",
+        fileName: "07 - We Suck Young Blood [FLAC][824 kbps].flac",
         duration: "4:56",
         durationSeconds: 296,
         description:
@@ -889,7 +889,7 @@ export const albums: Album[] = [
       {
         number: 8,
         title: "The Gloaming",
-        fileName: "8. The Gloaming.mp3",
+        fileName: "08 - The Gloaming [FLAC][927 kbps].flac",
         duration: "3:32",
         durationSeconds: 212,
         description:
@@ -902,7 +902,7 @@ export const albums: Album[] = [
       {
         number: 9,
         title: "There, There",
-        fileName: "9. There_ There.mp3",
+        fileName: "09 - There There [FLAC][894 kbps].flac",
         duration: "5:25",
         durationSeconds: 325,
         description:
@@ -917,7 +917,7 @@ export const albums: Album[] = [
       {
         number: 10,
         title: "I Will",
-        fileName: "10. I Will.mp3",
+        fileName: "10 - I Will [FLAC][749 kbps].flac",
         duration: "1:59",
         durationSeconds: 119,
         description:
@@ -931,7 +931,7 @@ export const albums: Album[] = [
       {
         number: 11,
         title: "A Punch Up at a Wedding",
-        fileName: "11. A Punch Up at a Wedding.mp3",
+        fileName: "11 - A Punchup at a Wedding [FLAC][916 kbps].flac",
         duration: "4:57",
         durationSeconds: 297,
         description:
@@ -940,7 +940,7 @@ export const albums: Album[] = [
       {
         number: 12,
         title: "Myxomatosis",
-        fileName: "12. Myxomatosis.mp3",
+        fileName: "12 - Myxomatosis [FLAC][1016 kbps].flac",
         duration: "3:52",
         durationSeconds: 232,
         description:
@@ -954,7 +954,7 @@ export const albums: Album[] = [
       {
         number: 13,
         title: "Scatterbrain",
-        fileName: "13. Scatterbrain.mp3",
+        fileName: "13 - Scatterbrain [FLAC][868 kbps].flac",
         duration: "3:21",
         durationSeconds: 201,
         description:
@@ -963,7 +963,7 @@ export const albums: Album[] = [
       {
         number: 14,
         title: "A Wolf at the Door",
-        fileName: "14. A Wolf At the Door.mp3",
+        fileName: "14 - A Wolf at the Door [FLAC][939 kbps].flac",
         duration: "3:21",
         durationSeconds: 201,
         description:
@@ -980,7 +980,7 @@ export const albums: Album[] = [
     id: "in-rainbows",
     title: "In Rainbows",
     year: 2007,
-    folderName: "7. In Rainbows (2007)",
+    folderName: "2007 - In Rainbows -Album",
     trackCount: 10,
     coverPath: "/covers/in-rainbows.jpg",
     accentColor: "hsl(330, 60%, 55%)",
@@ -994,7 +994,7 @@ export const albums: Album[] = [
       {
         number: 1,
         title: "15 Step",
-        fileName: "1. 15 Step.mp3",
+        fileName: "0101 - 15 Step [FLAC][900 kbps].flac",
         duration: "3:58",
         durationSeconds: 238,
         description:
@@ -1008,7 +1008,7 @@ export const albums: Album[] = [
       {
         number: 2,
         title: "Bodysnatchers",
-        fileName: "2. Bodysnatchers.mp3",
+        fileName: "0102 - Bodysnatchers [FLAC][985 kbps].flac",
         duration: "4:02",
         durationSeconds: 242,
         description:
@@ -1021,7 +1021,7 @@ export const albums: Album[] = [
       {
         number: 3,
         title: "Nude",
-        fileName: "3. Nude.mp3",
+        fileName: "0103 - Nude [FLAC][854 kbps].flac",
         duration: "4:15",
         durationSeconds: 255,
         description:
@@ -1035,7 +1035,7 @@ export const albums: Album[] = [
       {
         number: 4,
         title: "Weird Fishes/Arpeggi",
-        fileName: "4. Weird Fishes _ Arpeggi.mp3",
+        fileName: "0104 - Weird Fishes+Arpeggi [FLAC][898 kbps].flac",
         duration: "5:18",
         durationSeconds: 318,
         description:
@@ -1050,7 +1050,7 @@ export const albums: Album[] = [
       {
         number: 5,
         title: "All I Need",
-        fileName: "5. All I Need.mp3",
+        fileName: "0105 - All I Need [FLAC][861 kbps].flac",
         duration: "3:49",
         durationSeconds: 229,
         description:
@@ -1063,7 +1063,7 @@ export const albums: Album[] = [
       {
         number: 6,
         title: "Faust Arp",
-        fileName: "6. Faust Arp.mp3",
+        fileName: "0106 - Faust Arp [FLAC][810 kbps].flac",
         duration: "2:10",
         durationSeconds: 130,
         description:
@@ -1072,7 +1072,7 @@ export const albums: Album[] = [
       {
         number: 7,
         title: "Reckoner",
-        fileName: "7. Reckoner.mp3",
+        fileName: "0107 - Reckoner [FLAC][980 kbps].flac",
         duration: "4:50",
         durationSeconds: 290,
         description:
@@ -1086,7 +1086,7 @@ export const albums: Album[] = [
       {
         number: 8,
         title: "House of Cards",
-        fileName: "8. House Of Cards.mp3",
+        fileName: "0108 - House of Cards [FLAC][806 kbps].flac",
         duration: "5:28",
         durationSeconds: 328,
         description:
@@ -1099,7 +1099,7 @@ export const albums: Album[] = [
       {
         number: 9,
         title: "Jigsaw Falling into Place",
-        fileName: "9. Jigsaw Falling Into Place.mp3",
+        fileName: "0109 - Jigsaw Falling Into Place [FLAC][1000 kbps].flac",
         duration: "4:09",
         durationSeconds: 249,
         description:
@@ -1108,7 +1108,7 @@ export const albums: Album[] = [
       {
         number: 10,
         title: "Videotape",
-        fileName: "10. Videotape.mp3",
+        fileName: "0110 - Videotape [FLAC][699 kbps].flac",
         duration: "4:40",
         durationSeconds: 280,
         description:
@@ -1126,7 +1126,7 @@ export const albums: Album[] = [
     id: "king-of-limbs",
     title: "The King of Limbs",
     year: 2011,
-    folderName: "8. The King of Limbs (2011)",
+    folderName: "2011 - The King of Limbs -Album",
     trackCount: 8,
     coverPath: "/covers/king-of-limbs.jpg",
     accentColor: "hsl(90, 30%, 40%)",
@@ -1140,7 +1140,7 @@ export const albums: Album[] = [
       {
         number: 1,
         title: "Bloom",
-        fileName: "1. Bloom.mp3",
+        fileName: "01 - Bloom [FLAC][838 kbps].flac",
         duration: "5:15",
         durationSeconds: 315,
 
@@ -1155,7 +1155,7 @@ export const albums: Album[] = [
       {
         number: 2,
         title: "Morning Mr Magpie",
-        fileName: "2. Morning Mr Magpie.mp3",
+        fileName: "02 - Morning Mr Magpie [FLAC][792 kbps].flac",
         duration: "4:41",
         durationSeconds: 281,
         description:
@@ -1164,7 +1164,7 @@ export const albums: Album[] = [
       {
         number: 3,
         title: "Little by Little",
-        fileName: "3. Little By Little.mp3",
+        fileName: "03 - Little by Little [FLAC][888 kbps].flac",
         duration: "4:27",
         durationSeconds: 267,
         description:
@@ -1173,7 +1173,7 @@ export const albums: Album[] = [
       {
         number: 4,
         title: "Feral",
-        fileName: "4. Feral.mp3",
+        fileName: "04 - Feral [FLAC][822 kbps].flac",
         duration: "3:13",
         durationSeconds: 193,
         description:
@@ -1186,7 +1186,7 @@ export const albums: Album[] = [
       {
         number: 5,
         title: "Lotus Flower",
-        fileName: "5. Lotus Flower.mp3",
+        fileName: "05 - Lotus Flower [FLAC][866 kbps].flac",
         duration: "5:01",
         durationSeconds: 301,
         description:
@@ -1200,7 +1200,7 @@ export const albums: Album[] = [
       {
         number: 6,
         title: "Codex",
-        fileName: "6. Codex.mp3",
+        fileName: "06 - Codex [FLAC][531 kbps].flac",
         duration: "4:47",
         durationSeconds: 287,
         description:
@@ -1213,7 +1213,7 @@ export const albums: Album[] = [
       {
         number: 7,
         title: "Give Up the Ghost",
-        fileName: "7. Give Up The Ghost.mp3",
+        fileName: "07 - Give Up the Ghost [FLAC][707 kbps].flac",
         duration: "4:50",
         durationSeconds: 290,
         description:
@@ -1226,7 +1226,7 @@ export const albums: Album[] = [
       {
         number: 8,
         title: "Separator",
-        fileName: "8. Separator.mp3",
+        fileName: "08 - Separator [FLAC][817 kbps].flac",
         duration: "5:20",
         durationSeconds: 320,
         description:
@@ -1243,7 +1243,7 @@ export const albums: Album[] = [
     id: "moon-shaped-pool",
     title: "A Moon Shaped Pool",
     year: 2016,
-    folderName: "9. A Moon Shaped Pool (2016)",
+    folderName: "2016 - A Moon Shaped Pool -Album",
     trackCount: 11,
     coverPath: "/covers/moon-shaped-pool.jpg",
     accentColor: "hsl(220, 20%, 60%)",
@@ -1257,7 +1257,7 @@ export const albums: Album[] = [
       {
         number: 1,
         title: "Burn the Witch",
-        fileName: "1. Burn the Witch.mp3",
+        fileName: "0101 - Burn the Witch [FLAC][1739 kbps].flac",
         duration: "3:40",
         durationSeconds: 220,
         description:
@@ -1272,7 +1272,7 @@ export const albums: Album[] = [
       {
         number: 2,
         title: "Daydreaming",
-        fileName: "2. Daydreaming.mp3",
+        fileName: "0102 - Daydreaming [FLAC][1477 kbps].flac",
         duration: "6:24",
         durationSeconds: 384,
         description:
@@ -1286,7 +1286,7 @@ export const albums: Album[] = [
       {
         number: 3,
         title: "Decks Dark",
-        fileName: "3. Decks Dark.mp3",
+        fileName: "0103 - Decks Dark [FLAC][1507 kbps].flac",
         duration: "4:41",
         durationSeconds: 281,
         description:
@@ -1299,7 +1299,7 @@ export const albums: Album[] = [
       {
         number: 4,
         title: "Desert Island Disk",
-        fileName: "4. Desert Island Disk.mp3",
+        fileName: "0104 - Desert Island Disk [FLAC][1486 kbps].flac",
         duration: "3:44",
         durationSeconds: 224,
         description:
@@ -1308,7 +1308,7 @@ export const albums: Album[] = [
       {
         number: 5,
         title: "Ful Stop",
-        fileName: "5. Ful Stop.mp3",
+        fileName: "0105 - Ful Stop [FLAC][1518 kbps].flac",
         duration: "6:07",
         durationSeconds: 367,
         description:
@@ -1321,7 +1321,7 @@ export const albums: Album[] = [
       {
         number: 6,
         title: "Glass Eyes",
-        fileName: "6. Glass Eyes.mp3",
+        fileName: "0201 - Glass Eyes [FLAC][1416 kbps].flac",
         duration: "2:52",
         durationSeconds: 172,
         description:
@@ -1330,7 +1330,7 @@ export const albums: Album[] = [
       {
         number: 7,
         title: "Identikit",
-        fileName: "7. Identikit.mp3",
+        fileName: "0202 - Identikit [FLAC][1481 kbps].flac",
         duration: "4:26",
         durationSeconds: 266,
         description:
@@ -1343,7 +1343,7 @@ export const albums: Album[] = [
       {
         number: 8,
         title: "The Numbers",
-        fileName: "8. The Numbers.mp3",
+        fileName: "0203 - The Numbers [FLAC][1548 kbps].flac",
         duration: "5:45",
         durationSeconds: 345,
         description:
@@ -1357,7 +1357,7 @@ export const albums: Album[] = [
       {
         number: 9,
         title: "Present Tense",
-        fileName: "9. Present Tense.mp3",
+        fileName: "0204 - Present Tense [FLAC][1551 kbps].flac",
         duration: "5:06",
         durationSeconds: 306,
         description:
@@ -1370,8 +1370,7 @@ export const albums: Album[] = [
       {
         number: 10,
         title: "Tinker Tailor Soldier Sailor Rich Man Poor Man Beggar Man Thief",
-        fileName:
-          "10. Tinker Tailor Soldier Sailor Rich Man Poor Man Beggar Man Thief.mp3",
+        fileName: "0205 - Tinker Tailor Soldier Sailor Rich Man Poor Man Beggar Man Thief [FLAC][1589 kbps].flac",
         duration: "5:03",
         durationSeconds: 303,
         description:
@@ -1380,7 +1379,7 @@ export const albums: Album[] = [
       {
         number: 11,
         title: "True Love Waits",
-        fileName: "11. True Love Waits.mp3",
+        fileName: "0206 - True Love Waits [FLAC][1381 kbps].flac",
         duration: "4:43",
         durationSeconds: 283,
         description:

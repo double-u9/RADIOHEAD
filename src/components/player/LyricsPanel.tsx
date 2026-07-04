@@ -41,19 +41,34 @@ export default function LyricsPanel({
     );
 
     if (lrcDetected) {
-      const parsed = rawLines
-        .map((line) => {
-          const match = line.match(/^\[(\d{2}):(\d{2})\.(\d{2,3})\]\s*(.*)/);
-          if (match) {
-            const time =
-              parseInt(match[1]) * 60 +
-              parseInt(match[2]) +
-              parseInt(match[3]) / (match[3].length === 3 ? 1000 : 100);
-            return { time, text: match[4] };
+      const parsed: ParsedLine[] = [];
+      
+      rawLines.forEach((line) => {
+        const timestampRegex = /\[\d{2}:\d{2}(?:[\.:]\d{2,3})?\]/g;
+        const timestamps = line.match(timestampRegex);
+        
+        if (timestamps) {
+          const text = line.replace(timestampRegex, '').trim();
+          timestamps.forEach((ts) => {
+            const timeMatch = ts.match(/\[(\d{2}):(\d{2})(?:[\.:](\d{2,3}))?\]/);
+            if (timeMatch) {
+              const minutes = parseInt(timeMatch[1], 10);
+              const seconds = parseInt(timeMatch[2], 10);
+              const fractionStr = timeMatch[3] || '0';
+              const fraction = parseInt(fractionStr, 10) / (fractionStr.length === 3 ? 1000 : 100);
+              const time = minutes * 60 + seconds + fraction;
+              parsed.push({ time, text });
+            }
+          });
+        } else {
+          if (line.trim() !== "") {
+            parsed.push({ time: -1, text: line.trim() });
           }
-          return { time: -1, text: line };
-        })
-        .filter((l) => l.text.trim() !== "" || l.time !== -1);
+        }
+      });
+      
+      // Sort parsed lines by time
+      parsed.sort((a, b) => a.time - b.time);
 
       // POST-PROCESS: Distribute duplicate timestamps for clumped lines
       for (let i = 0; i < parsed.length; i++) {

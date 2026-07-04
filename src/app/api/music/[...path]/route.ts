@@ -6,7 +6,7 @@ import { Readable } from "stream";
 
 const statAsync = promisify(stat);
 
-const MUSIC_BASE = process.env.MUSIC_BASE_PATH || join(process.cwd(), "songs", "Main Album");
+const MUSIC_BASE = process.env.MUSIC_BASE_PATH || join(process.cwd(), "songs", "MAIN ALBUMS");
 
 export async function GET(
   request: NextRequest,
@@ -48,7 +48,7 @@ export async function GET(
           "Content-Range": `bytes ${start}-${end}/${fileSize}`,
           "Accept-Ranges": "bytes",
           "Content-Length": String(chunkSize),
-          "Content-Type": "audio/mpeg",
+          "Content-Type": filePath.endsWith(".flac") ? "audio/flac" : filePath.endsWith(".lrc") ? "text/plain" : "audio/mpeg",
           "Cache-Control": "public, max-age=86400",
         },
       });
@@ -61,7 +61,7 @@ export async function GET(
       status: 200,
       headers: {
         "Content-Length": String(fileSize),
-        "Content-Type": "audio/mpeg",
+        "Content-Type": filePath.endsWith(".flac") ? "audio/flac" : filePath.endsWith(".lrc") ? "text/plain" : "audio/mpeg",
         "Accept-Ranges": "bytes",
         "Cache-Control": "public, max-age=86400",
       },

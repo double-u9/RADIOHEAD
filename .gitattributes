@@ -1,1 +1,2 @@
 songs/MINI[[:space:]]DISKS/Radiohead[[:space:]]-[[:space:]]MINIDISCS[[:space:]]-[[:space:]]12[[:space:]]MD122.mp3 filter=lfs diff=lfs merge=lfs -text
+*.flac filter=lfs diff=lfs merge=lfs -text

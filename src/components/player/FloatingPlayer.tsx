@@ -113,10 +113,10 @@ export default function FloatingPlayer() {
     setLyricsLoading(true);
     setFetchedLyrics(null);
 
-    const txtFileName = trackKey.replace(".mp3", ".txt");
-    const fetchUrl = currentAlbum.id === "b-sides"
-      ? `/lyrics/b-sides/${encodeURIComponent(txtFileName)}`
-      : `/lyrics/albums/${currentAlbum.id}/${encodeURIComponent(txtFileName)}`;
+    const isMainAlbum = currentAlbum.id !== "b-sides" && currentAlbum.id !== "minidiscs";
+    const fetchUrl = isMainAlbum
+      ? `/api/music/${encodeURIComponent(currentAlbum.folderName)}/${encodeURIComponent(trackKey.replace(".flac", ".lrc"))}`
+      : `/lyrics/b-sides/${encodeURIComponent(trackKey.replace(".mp3", ".txt"))}`;
 
     fetch(fetchUrl)
       .then(async (res) => {
