@@ -6,6 +6,7 @@ export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const mousePos = useRef({ x: -100, y: -100 });
   const currentPos = useRef({ x: -100, y: -100 });
+  const currentScale = useRef(0.2);
   const [isHovering, setIsHovering] = useState(false);
   const [isTouch, setIsTouch] = useState(false);
 
@@ -58,14 +59,22 @@ export default function CustomCursor() {
 
     // Animation loop with lerp for smooth following
     let raf: number;
-    const lerp = 0.15;
+    // Lower lerp for position (smooth but responsive, fixing 'too quick' jumpiness)
+    const posLerp = 0.25;
+    // Slower lerp for scale (smooth hover expansion)
+    const scaleLerp = 0.2;
 
     const animate = () => {
-      currentPos.current.x += (mousePos.current.x - currentPos.current.x) * lerp;
-      currentPos.current.y += (mousePos.current.y - currentPos.current.y) * lerp;
+      currentPos.current.x += (mousePos.current.x - currentPos.current.x) * posLerp;
+      currentPos.current.y += (mousePos.current.y - currentPos.current.y) * posLerp;
+      
+      // Base scale 0.2 of 40px = 8px. Hover scale 1 of 40px = 40px.
+      const targetScale = isHovering ? 1 : 0.2;
+      currentScale.current += (targetScale - currentScale.current) * scaleLerp;
 
       if (dotRef.current) {
-        dotRef.current.style.transform = `translate(${currentPos.current.x - 4}px, ${currentPos.current.y - 4}px)${isHovering ? ' scale(5)' : ''}`;
+        // Offset by 20px (half of 40px width/height) to center the dot exactly on cursor
+        dotRef.current.style.transform = `translate(${currentPos.current.x - 20}px, ${currentPos.current.y - 20}px) scale(${currentScale.current})`;
       }
 
       raf = requestAnimationFrame(animate);

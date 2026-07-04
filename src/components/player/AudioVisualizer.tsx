@@ -38,12 +38,7 @@ export default function AudioVisualizer({
     durationRef.current = duration;
   }, [progress, duration]);
 
-  // Grab the global analyser
-  useEffect(() => {
-    if (!analyserRef.current && window.__globalAnalyser) {
-      analyserRef.current = window.__globalAnalyser;
-    }
-  }, [isPlaying]);
+  // The analyser is picked up directly in the draw loop to avoid race conditions.
 
   // Animation loop
   useEffect(() => {
@@ -70,6 +65,10 @@ export default function AudioVisualizer({
       const progressPercent = d > 0 ? p / d : 0;
       const safePercent = Math.max(0, Math.min(1, progressPercent));
 
+      if (!analyserRef.current && window.__globalAnalyser) {
+        analyserRef.current = window.__globalAnalyser;
+      }
+      
       const analyser = analyserRef.current;
       const isStatic = !analyser || !isPlaying;
 

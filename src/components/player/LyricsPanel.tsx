@@ -27,9 +27,7 @@ export default function LyricsPanel({
   const containerRef = useRef<HTMLDivElement>(null);
   const linesContainerRef = useRef<HTMLDivElement>(null);
   const lineRefs = useRef<(HTMLParagraphElement | null)[]>([]);
-  const currentTranslateY = useRef(0);
   const targetTranslateY = useRef(0);
-  const rafId = useRef<number>(0);
 
   // Parse lyrics once and memoize
   const { parsedLines, hasLRC } = useMemo(() => {
@@ -67,10 +65,9 @@ export default function LyricsPanel({
         }
       });
       
-      // Sort parsed lines by time
       parsed.sort((a, b) => a.time - b.time);
 
-      // POST-PROCESS: Distribute duplicate timestamps for clumped lines
+      // Distribute duplicate timestamps for clumped lines
       for (let i = 0; i < parsed.length; i++) {
         let j = i;
         while (j < parsed.length && parsed[j].time === parsed[i].time) {
@@ -78,8 +75,7 @@ export default function LyricsPanel({
         }
         const count = j - i;
         if (count > 1 && parsed[i].time !== -1) {
-          // Find the next unique timestamp
-          let nextTime = parsed[i].time + 2; // Default 2 second gap if at the end
+          let nextTime = parsed[i].time + 2; 
           for (let k = j; k < parsed.length; k++) {
             if (parsed[k].time > parsed[i].time) {
               nextTime = parsed[k].time;
@@ -87,7 +83,6 @@ export default function LyricsPanel({
             }
           }
           
-          // Divide the duration equally among the duplicate lines
           const duration = nextTime - parsed[i].time;
           const step = duration / count;
           
@@ -95,12 +90,11 @@ export default function LyricsPanel({
             parsed[i + k].time = parsed[i].time + (k * step);
           }
         }
-        i = j - 1; // Advance the outer loop
+        i = j - 1;
       }
 
       return { parsedLines: parsed, hasLRC: true };
     } else {
-      // Plain text: assign evenly spaced times
       const nonEmpty = rawLines.filter((l) => l.trim() !== "");
       const interval = duration > 0 ? duration / nonEmpty.length : 4;
       const parsed = nonEmpty.map((text, i) => ({
@@ -132,81 +126,53 @@ export default function LyricsPanel({
     const container = containerRef.current;
     const linesContainer = linesContainerRef.current;
 
-    // Use index 0 as target if no active line yet (e.g. during intro)
     const targetIndex = currentActiveIndex === -1 ? 0 : currentActiveIndex;
     const activeLine = lineRefs.current[targetIndex];
 
     if (!container || !activeLine || !linesContainer) return;
 
     const containerHeight = container.clientHeight;
-    // Pin active line at 35% from top (Spotify-style: slightly above center)
     const pinPosition = containerHeight * 0.35;
 
-    // Get the active line's position within the lines container
     const lineTop = activeLine.offsetTop;
     const lineHeight = activeLine.offsetHeight;
     const lineCenterY = lineTop + lineHeight / 2;
 
-    // We want lineCenterY + translateY = pinPosition
     targetTranslateY.current = pinPosition - lineCenterY;
-  }, [currentActiveIndex]);
+    
+    // Natively apply the transform to trigger the unified CSS transition
+    linesContainer.style.transform = `translateY(${targetTranslateY.current}px)`;
+  }, [currentActiveIndex, isStaticMode]);
 
-  // Update target whenever active index changes
   useEffect(() => {
     updateTargetPosition();
   }, [currentActiveIndex, updateTargetPosition]);
 
   const [isReady, setIsReady] = useState(false);
 
-  // Also recalculate after first render when DOM is ready
   useEffect(() => {
-    // Reset explicitly so state doesn't leak from previous song
-    currentTranslateY.current = 0;
     targetTranslateY.current = 0;
-    // Delay slightly to prevent sync cascading renders
     setTimeout(() => setIsReady(false), 0);
 
-    // Small delay to ensure DOM measurements are accurate
     const timer = setTimeout(() => {
-      updateTargetPosition();
-      // Snap immediately on first render (no animation)
-      currentTranslateY.current = targetTranslateY.current;
+      // Temporarily disable transition for the initial snap
       if (linesContainerRef.current) {
-        linesContainerRef.current.style.transform = `translateY(${currentTranslateY.current}px)`;
+        linesContainerRef.current.style.transition = 'none';
+      }
+      
+      updateTargetPosition();
+      
+      // Re-enable transition after the snap
+      if (linesContainerRef.current) {
+        // Force reflow
+        linesContainerRef.current.getBoundingClientRect();
+        linesContainerRef.current.style.transition = '';
       }
       setIsReady(true);
     }, 50);
     return () => clearTimeout(timer);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [parsedLines]);
-
-  // Smooth animation loop using requestAnimationFrame with lerp
-  useEffect(() => {
-    if (isStaticMode) return;
-
-    const animate = () => {
-      const diff = targetTranslateY.current - currentTranslateY.current;
-
-      // Lerp factor: 0.08 gives a smooth, cinematic glide
-      // Higher = snappier, Lower = smoother/slower
-      const lerp = 0.08;
-
-      if (Math.abs(diff) > 0.5) {
-        currentTranslateY.current += diff * lerp;
-      } else {
-        currentTranslateY.current = targetTranslateY.current;
-      }
-
-      if (linesContainerRef.current) {
-        linesContainerRef.current.style.transform = `translateY(${currentTranslateY.current}px)`;
-      }
-
-      rafId.current = requestAnimationFrame(animate);
-    };
-
-    rafId.current = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafId.current);
-  }, []);
 
   if (!lyrics) {
     return (
@@ -224,20 +190,17 @@ export default function LyricsPanel({
       return {
         opacity: 0.8,
         scale: 1,
-        filter: "none",
         color: "#ffffff",
         textShadow: "none",
       };
     }
 
-    // Before vocals start, everything is dimmed and waiting
     if (currentActiveIndex === -1) {
       const distFromTop = index;
       const normalizedDist = Math.min(distFromTop, 8) / 8;
       return {
         opacity: Math.max(0.04, 0.15 * (1 - normalizedDist)),
-        scale: 1,
-        filter: `blur(${Math.min(3, distFromTop * 0.5 + 1)}px)`,
+        scale: 0.9,
         color: "#ffffff",
         textShadow: "none",
       };
@@ -251,38 +214,37 @@ export default function LyricsPanel({
       return {
         opacity: 1,
         scale: 1,
-        filter: "blur(0px)",
         color: "#ffffff",
-        textShadow: `0 0 40px rgba(${accentColorRGB}, 0.6), 0 0 100px rgba(${accentColorRGB}, 0.2)`,
+        // A much more refined, subtle ambient shadow instead of heavy glowing
+        textShadow: `0 4px 30px rgba(0,0,0,0.5)`,
       };
     }
 
-    // Gradual fade based on distance from active line
-    // Closer lines are more visible, farther ones fade more
+    // Smooth cinematic opacity-stepping depth of field
+    // Completely replaces expensive CSS blur filters
     const maxDistance = 8;
     const normalizedDist = Math.min(distance, maxDistance) / maxDistance;
 
     let opacity: number;
-    let blur: number;
+    let scale: number;
 
     if (distance === 1) {
-      opacity = isPast ? 0.45 : 0.35;
-      blur = 0;
+      opacity = isPast ? 0.35 : 0.5;
+      scale = 0.98;
     } else if (distance === 2) {
-      opacity = isPast ? 0.3 : 0.2;
-      blur = 0.5;
+      opacity = isPast ? 0.15 : 0.25;
+      scale = 0.95;
     } else if (distance === 3) {
-      opacity = isPast ? 0.2 : 0.12;
-      blur = 1;
+      opacity = isPast ? 0.08 : 0.12;
+      scale = 0.92;
     } else {
-      opacity = Math.max(0.04, 0.15 * (1 - normalizedDist));
-      blur = Math.min(3, distance * 0.5);
+      opacity = Math.max(0.02, 0.1 * (1 - normalizedDist));
+      scale = 0.9;
     }
 
     return {
       opacity,
-      scale: 1,
-      filter: `blur(${blur}px)`,
+      scale,
       color: "#ffffff",
       textShadow: "none",
     };
@@ -303,7 +265,8 @@ export default function LyricsPanel({
     >
       <div
         ref={linesContainerRef}
-        className={isStaticMode ? "" : "will-change-transform"}
+        // Unified GPU Transition Physics for scrolling
+        className={isStaticMode ? "" : "will-change-transform transition-transform duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)]"}
         style={isStaticMode ? {} : {}}
       >
         {parsedLines.map((line, i) => {
@@ -321,21 +284,21 @@ export default function LyricsPanel({
           }
 
           return (
-            <p
-              key={i}
-              ref={(el) => { lineRefs.current[i] = el; }}
-              className="font-sans font-black text-xl md:text-3xl lg:text-4xl tracking-[-0.02em] leading-[1.3] py-2 md:py-3 px-4 md:px-12 cursor-default transition-all duration-700 ease-out"
-              style={{
-                opacity: style.opacity,
-                filter: style.filter,
-                color: style.color,
-                textShadow: style.textShadow,
-                transform: `scale(${style.scale})`,
-                transformOrigin: "left center",
-              }}
-            >
-              {line.text}
-            </p>
+            <div key={i} className="flex justify-center md:justify-start w-full">
+              <p
+                ref={(el) => { lineRefs.current[i] = el; }}
+                // Refined premium typography with identical GPU transition physics
+                className="font-sans font-bold text-2xl md:text-4xl lg:text-[2.75rem] tracking-tight leading-[1.3] md:leading-[1.25] py-3 md:py-4 px-4 md:px-12 cursor-default transition-[opacity,transform,text-shadow] duration-[800ms] ease-[cubic-bezier(0.25,1,0.5,1)] text-center md:text-left origin-center md:origin-left will-change-[transform,opacity]"
+                style={{
+                  opacity: style.opacity,
+                  color: style.color,
+                  textShadow: style.textShadow,
+                  transform: `scale(${style.scale})`,
+                }}
+              >
+                {line.text}
+              </p>
+            </div>
           );
         })}
       </div>

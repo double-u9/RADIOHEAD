@@ -50,6 +50,8 @@ export default function FloatingPlayer() {
   const progressRef = useRef<HTMLDivElement>(null);
   const miniProgressRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
+  const [dragProgress, setDragProgress] = useState<number | null>(null);
+  const [dragVolume, setDragVolume] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState<FullscreenTab | null>(null);
 
   // ─── Dynamic Lyrics Fetching ──────────────────────────────────
@@ -382,12 +384,19 @@ export default function FloatingPlayer() {
 
   // ─── Progress bar drag support ─────────────────────────────
   const handleProgressSeek = useCallback(
-    (e: React.MouseEvent<HTMLDivElement> | MouseEvent, ref: React.RefObject<HTMLDivElement | null>) => {
+    (e: React.MouseEvent<HTMLDivElement> | MouseEvent, ref: React.RefObject<HTMLDivElement | null>, isFinal = false) => {
       const el = ref.current;
       if (!el) return;
       const rect = el.getBoundingClientRect();
       const fraction = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-      seek(fraction * duration);
+      const newTime = fraction * duration;
+      
+      setDragProgress(newTime);
+      
+      if (isFinal) {
+        seek(newTime);
+        setTimeout(() => setDragProgress(null), 50); // slight delay to prevent flicker during store sync
+      }
     },
     [duration, seek]
   );
@@ -395,11 +404,12 @@ export default function FloatingPlayer() {
   const handleProgressMouseDown = useCallback(
     (e: React.MouseEvent<HTMLDivElement>, ref: React.RefObject<HTMLDivElement | null>) => {
       setIsDragging(true);
-      handleProgressSeek(e, ref);
+      handleProgressSeek(e, ref, false);
 
-      const onMouseMove = (ev: MouseEvent) => handleProgressSeek(ev as unknown as React.MouseEvent<HTMLDivElement>, ref);
-      const onMouseUp = () => {
+      const onMouseMove = (ev: MouseEvent) => handleProgressSeek(ev as unknown as React.MouseEvent<HTMLDivElement>, ref, false);
+      const onMouseUp = (ev: MouseEvent) => {
         setIsDragging(false);
+        handleProgressSeek(ev as unknown as React.MouseEvent<HTMLDivElement>, ref, true);
         window.removeEventListener("mousemove", onMouseMove);
         window.removeEventListener("mouseup", onMouseUp);
       };
@@ -424,9 +434,12 @@ export default function FloatingPlayer() {
   // B-sides and minidiscs artwork comes from a dynamic API route — must bypass Next.js image optimizer
   const isUnoptimized = currentAlbum?.id === "b-sides" || currentAlbum?.id === "minidiscs";
 
-  const progressPercent = duration > 0 ? (progress / duration) * 100 : 0;
+  const displayProgress = dragProgress !== null ? dragProgress : progress;
+  const progressPercent = duration > 0 ? (displayProgress / duration) * 100 : 0;
+  
+  const displayVolume = dragVolume !== null ? dragVolume : (isMuted ? 0 : volume);
   const VolumeIcon =
-    isMuted || volume === 0 ? VolumeX : volume < 0.5 ? Volume1 : Volume2;
+    displayVolume === 0 ? VolumeX : displayVolume < 0.5 ? Volume1 : Volume2;
 
   const tabs = [
     { id: "equalizer" as const, icon: SlidersHorizontal, label: "Equalizer" },
@@ -715,7 +728,7 @@ export default function FloatingPlayer() {
                   >
                     <AudioVisualizer
                       variant="progress"
-                      progress={progress}
+                      progress={displayProgress}
                       duration={duration}
                       accentColorRGB={currentAlbum.accentColorRGB}
                       className="w-full h-full pointer-events-none"
@@ -724,7 +737,7 @@ export default function FloatingPlayer() {
                   <div className="flex justify-between mt-1">
                     <div className="flex items-center gap-2">
                       <span className="text-xs font-medium text-white/60 tabular-nums">
-                        {formatTime(progress)}
+                        {formatTime(displayProgress)}
                       </span>
                       {isPlaying && (
                         <div className="w-4 h-3">
@@ -832,24 +845,40 @@ export default function FloatingPlayer() {
                       <div className="relative w-20 h-4 flex items-center group cursor-pointer">
                         <div className="w-full h-[3px] bg-white/[0.06] rounded-full overflow-hidden">
                           <div
-                            className="h-full rounded-full transition-[width] duration-100"
+                            className="h-full rounded-full"
                             style={{
-                              width: `${(isMuted ? 0 : volume) * 100}%`,
+                              width: `${displayVolume * 100}%`,
                               background: "rgba(255,255,255,0.35)",
                             }}
                           />
                         </div>
                         <div
                           className="absolute w-2.5 h-2.5 rounded-full bg-white shadow-sm pointer-events-none"
-                          style={{ left: `calc(${(isMuted ? 0 : volume) * 100}% - 5px)` }}
+                          style={{ left: `calc(${displayVolume} * (100% - 10px))`, top: "50%", transform: "translateY(-50%)" }}
                         />
                         <input
                           type="range"
                           min={0}
                           max={1}
                           step={0.01}
-                          value={isMuted ? 0 : volume}
-                          onChange={(e) => setVolume(Number(e.target.value))}
+                          value={displayVolume}
+                          onChange={(e) => {
+                            const val = Number(e.target.value);
+                            setDragVolume(val);
+                            if (audioRef.current) audioRef.current.volume = val;
+                          }}
+                          onMouseUp={() => {
+                            if (dragVolume !== null) {
+                              setVolume(dragVolume);
+                              setTimeout(() => setDragVolume(null), 50);
+                            }
+                          }}
+                          onTouchEnd={() => {
+                            if (dragVolume !== null) {
+                              setVolume(dragVolume);
+                              setTimeout(() => setDragVolume(null), 50);
+                            }
+                          }}
                           className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                         />
                       </div>
@@ -1054,7 +1083,7 @@ export default function FloatingPlayer() {
               {/* Progress Bar */}
               <div className="flex items-center gap-2.5 w-full">
                 <span className="text-[10px] text-white/30 font-mono w-9 text-right tabular-nums">
-                  {formatTime(progress)}
+                  {formatTime(displayProgress)}
                 </span>
                 <div
                   ref={miniProgressRef}
@@ -1063,7 +1092,7 @@ export default function FloatingPlayer() {
                 >
                   <div className="w-full h-[3px] group-hover:h-[4px] bg-white/[0.08] rounded-full transition-all duration-300">
                     <div
-                      className="h-full rounded-full transition-[width] duration-75"
+                      className={`h-full rounded-full ${isDragging ? '' : 'transition-[width] duration-75'}`}
                       style={{
                         width: `${progressPercent}%`,
                         background: `linear-gradient(90deg, rgba(${currentAlbum.accentColorRGB}, 0.5), rgba(255,255,255,0.7))`,
@@ -1072,7 +1101,7 @@ export default function FloatingPlayer() {
                   </div>
                   <div 
                     className="absolute w-2.5 h-2.5 bg-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-sm"
-                    style={{ left: `calc(${progressPercent}% - 5px)`, top: "50%", transform: "translateY(-50%)" }}
+                    style={{ left: `calc(${progressPercent / 100} * (100% - 10px))`, top: "50%", transform: "translateY(-50%)" }}
                   />
                 </div>
                 <span className="text-[10px] text-white/30 font-mono w-9 tabular-nums">
@@ -1115,24 +1144,40 @@ export default function FloatingPlayer() {
                 <div className="relative w-20 h-4 flex items-center cursor-pointer">
                   <div className="w-full h-[3px] bg-white/[0.06] rounded-full overflow-hidden">
                     <div
-                      className="h-full rounded-full transition-[width] duration-100"
+                      className="h-full rounded-full"
                       style={{
-                        width: `${(isMuted ? 0 : volume) * 100}%`,
+                        width: `${displayVolume * 100}%`,
                         background: "rgba(255,255,255,0.3)",
                       }}
                     />
                   </div>
                   <div 
                     className="absolute w-2.5 h-2.5 bg-white rounded-full shadow-sm pointer-events-none"
-                    style={{ left: `calc(${(isMuted ? 0 : volume) * 100}% - 5px)`, top: "50%", transform: "translateY(-50%)" }}
+                    style={{ left: `calc(${displayVolume} * (100% - 10px))`, top: "50%", transform: "translateY(-50%)" }}
                   />
                   <input
                     type="range"
                     min={0}
                     max={1}
                     step={0.01}
-                    value={isMuted ? 0 : volume}
-                    onChange={(e) => setVolume(Number(e.target.value))}
+                    value={displayVolume}
+                    onChange={(e) => {
+                      const val = Number(e.target.value);
+                      setDragVolume(val);
+                      if (audioRef.current) audioRef.current.volume = val;
+                    }}
+                    onMouseUp={() => {
+                      if (dragVolume !== null) {
+                        setVolume(dragVolume);
+                        setTimeout(() => setDragVolume(null), 50);
+                      }
+                    }}
+                    onTouchEnd={() => {
+                      if (dragVolume !== null) {
+                        setVolume(dragVolume);
+                        setTimeout(() => setDragVolume(null), 50);
+                      }
+                    }}
                     className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
                   />
                 </div>
