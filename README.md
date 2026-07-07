@@ -68,7 +68,7 @@ The core of the application's interactivity is `src/store/player-store.ts`.
 
 ### Data Flow & API Communication
 - Client components fetch metadata via standard `fetch` to Next.js API routes (e.g., `/api/minidiscs`).
-- **Metadata Parsing:** The API routes read directories (like `/MINI DISKS/`), parse MP3 ID3 tags on the server, and return JSON arrays of tracks.
+- **Metadata Parsing:** The API routes read directories (like `songs/MINI DISKS/`), parse MP3/FLAC ID3 tags on the server, and return JSON arrays of tracks.
 - **Caching Strategy:** To prevent the server from choking on gigabytes of audio, the API routes utilize a custom persistent JSON cache layer, reducing 2-second load times down to `1ms`.
 
 ---
@@ -77,16 +77,19 @@ The core of the application's interactivity is `src/store/player-store.ts`.
 
 ```text
 radiohead-app/
-├── B-side/                     # Local storage for B-side audio files
-│   └── lyrics/                 # Text and LRC files for B-sides
-├── MINI DISKS/                 # Local storage for massive MiniDisc archives
 ├── public/                     # Static assets (fonts, images, shadows)
+├── songs/                      # Local storage for all audio archives
+│   ├── B-side/                 # B-side audio files and lyrics
+│   ├── MAIN ALBUMS/            # Studio albums storage
+│   ├── MINI DISKS/             # Massive MiniDisc archives
+│   └── TOWERING ABOVE THE REST/# 24-CD comprehensive compilation
 ├── src/
 │   ├── app/                    # Next.js App Router root
 │   │   ├── albums/             # Album showcase routes
 │   │   ├── api/                # Backend API Routes (metadata, audio streaming)
 │   │   ├── b-sides/            # B-sides catalog route
 │   │   ├── minidiscs/          # MiniDiscs catalog route
+│   │   ├── towering/           # Towering Above the Rest catalog route
 │   │   ├── layout.tsx          # Root layout (injects global UI/Player)
 │   │   └── page.tsx            # Landing Page
 │   ├── components/
@@ -106,7 +109,7 @@ radiohead-app/
 ### Prerequisites
 - Node.js (v18 or higher)
 - npm, yarn, or pnpm
-- Valid audio files placed in `/B-side` and `/MINI DISKS` directories.
+- Valid audio files placed in the `songs/` subdirectories (e.g., `songs/B-side`, `songs/MINI DISKS`).
 
 ### Setup Instructions
 
@@ -122,7 +125,7 @@ radiohead-app/
    ```
 
 3. **Populate Audio Directories:**
-   Ensure you have your `.mp3` or `.flac` files inside the root `/B-side` and `/MINI DISKS` folders.
+   Ensure you have your `.mp3` or `.flac` files inside the `songs/B-side` and `songs/MINI DISKS` folders.
    
    **For the "Towering Above the Rest" Archive:**
    You can download the full 24-CD collection from this Google Drive link:
@@ -224,7 +227,7 @@ Deploying this application requires a platform that allows local file-system acc
 
 **Recommended: Docker & Traditional VPS (DigitalOcean / AWS EC2)**
 1. Dockerize the application.
-2. Mount the `/B-side` and `/MINI DISKS` directories as external Docker volumes.
+2. Mount the `songs/` directory as an external Docker volume.
 3. Serve via NGINX reverse proxy.
 
 *Note: Standard Vercel/Netlify deployments are NOT recommended because serverless functions have a 50MB-250MB size limit, which cannot accommodate gigabytes of local `.mp3` files.*
