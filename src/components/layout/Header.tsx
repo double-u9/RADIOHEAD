@@ -65,6 +65,15 @@ export default function Header({
           >
             Mini Discs
           </Link>
+          <Link
+            href="/towering"
+            className={`nav-link text-[11px] tracking-[0.2em] uppercase font-medium transition-opacity duration-300 ${pathname.startsWith("/towering")
+              ? "text-white active"
+              : "text-white/50 hover:text-white"
+              }`}
+          >
+            Towering Above the Rest
+          </Link>
         </nav>
       </div>
     </motion.header>

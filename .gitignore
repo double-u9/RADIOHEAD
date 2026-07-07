@@ -45,3 +45,8 @@ next-env.d.ts
 
 
 
+
+# Ignore heavy audio files in Towering Above the Rest
+songs/TOWERING ABOVE THE REST/**/*.flac
+songs/TOWERING ABOVE THE REST/**/*.mp3
+songs/TOWERING ABOVE THE REST/**/cd-cache.json

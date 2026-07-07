@@ -94,8 +94,8 @@ export default function FloatingPlayer() {
   useEffect(() => {
     if (!currentTrack || !currentAlbum) return;
 
-    // Mini Discs are audio-only and have no lyrics.
-    if (currentAlbum.id === "minidiscs") {
+    // Mini Discs and Towering Above the Rest are audio-only and have no lyrics.
+    if (currentAlbum.id === "minidiscs" || currentAlbum.id.startsWith("towering-")) {
       setTimeout(() => {
         setFetchedLyrics(null);
         setLyricsLoading(false);
@@ -155,7 +155,7 @@ export default function FloatingPlayer() {
   // ─── Reset activeTab for instrumental tracks ────────────────
   useEffect(() => {
     if (activeTab === "lyrics") {
-      const isMiniDisc = currentAlbum?.id === "minidiscs";
+      const isMiniDisc = currentAlbum?.id === "minidiscs" || currentAlbum?.id.startsWith("towering-");
       const isInst = currentTrack?.title === "Treefingers" || currentTrack?.title === "Hunting Bears" || currentTrack?.title === "Feral";
       if (isMiniDisc || isInst) {
         setActiveTab(null);
@@ -356,6 +356,8 @@ export default function FloatingPlayer() {
       ? `/api/bsides/artwork?file=${encodeURIComponent(currentTrack?.fileName || '')}`
       : currentAlbum?.id === "minidiscs"
       ? currentTrack?.coverPath || ''
+      : currentAlbum?.id.startsWith("towering-")
+      ? currentTrack?.coverPath || currentAlbum.coverPath || ''
       : currentAlbum?.coverPath || '';
 
     try {
@@ -429,10 +431,12 @@ export default function FloatingPlayer() {
     ? `/api/bsides/artwork?file=${encodeURIComponent(currentTrack?.fileName || '')}`
     : currentAlbum?.id === "minidiscs"
     ? currentTrack?.coverPath || ''
+    : currentAlbum?.id.startsWith("towering-")
+    ? currentTrack?.coverPath || currentAlbum.coverPath || ''
     : currentAlbum?.coverPath || '';
 
   // B-sides and minidiscs artwork comes from a dynamic API route — must bypass Next.js image optimizer
-  const isUnoptimized = currentAlbum?.id === "b-sides" || currentAlbum?.id === "minidiscs";
+  const isUnoptimized = currentAlbum?.id === "b-sides" || currentAlbum?.id === "minidiscs" || currentAlbum?.id.startsWith("towering-");
 
   const displayProgress = dragProgress !== null ? dragProgress : progress;
   const progressPercent = duration > 0 ? (displayProgress / duration) * 100 : 0;
@@ -493,7 +497,7 @@ export default function FloatingPlayer() {
 
   const renderTabSwitcher = () => {
     // Mini Discs and instrumental tracks like "Treefingers" shouldn't show a lyrics tab
-    const isMiniDisc = currentAlbum?.id === "minidiscs";
+    const isMiniDisc = currentAlbum?.id === "minidiscs" || currentAlbum?.id.startsWith("towering-");
     const isInstrumental = currentTrack?.title === "Treefingers" || currentTrack?.title === "Hunting Bears" || currentTrack?.title === "Feral";
     const availableTabs = (isMiniDisc || isInstrumental)
       ? tabs.filter((tab) => tab.id !== "lyrics")
@@ -1112,7 +1116,7 @@ export default function FloatingPlayer() {
 
             {/* Right: Extra Controls */}
             <div className="flex items-center justify-end gap-2 w-[30%] min-w-[160px]">
-              {currentAlbum?.id !== "minidiscs" && (
+              {currentAlbum?.id !== "minidiscs" && !currentAlbum?.id.startsWith("towering-") && (
                 <button
                   onClick={() => {
                     setActiveTab("lyrics");

@@ -15,7 +15,7 @@ export async function GET(
   const { path } = await params;
   const decodedPath = path.map((p) => decodeURIComponent(p));
   let filePath = "";
-  if (decodedPath[0] === "B-side" || decodedPath[0] === "MINI DISKS") {
+  if (decodedPath[0] === "B-side" || decodedPath[0] === "MINI DISKS" || decodedPath[0] === "TOWERING ABOVE THE REST") {
     // Stream local folders directly from the project root/songs folder
     filePath = join(process.cwd(), "songs", ...decodedPath);
   } else {

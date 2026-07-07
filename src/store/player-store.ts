@@ -55,7 +55,8 @@ interface PlayerState {
 }
 
 function getTrackUrl(album: Album, track: Track): string {
-  return `/api/music/${encodeURIComponent(album.folderName)}/${encodeURIComponent(track.fileName)}`;
+  const encodedFolder = album.folderName.split("/").map(encodeURIComponent).join("/");
+  return `/api/music/${encodedFolder}/${encodeURIComponent(track.fileName)}`;
 }
 
 export const usePlayerStore = create<PlayerState>((set, get) => ({
