@@ -122,7 +122,13 @@ radiohead-app/
    ```
 
 3. **Populate Audio Directories:**
-   Ensure you have your `.mp3` files inside the root `/B-side` and `/MINI DISKS` folders.
+   Ensure you have your `.mp3` or `.flac` files inside the root `/B-side` and `/MINI DISKS` folders.
+   
+   **For the "Towering Above the Rest" Archive:**
+   You can download the full 24-CD collection from this Google Drive link:
+   [Download Towering Above the Rest](https://drive.google.com/drive/folders/1BFLIY4va5MpXWtMzc8P-p1ntijUlJcKe?usp=sharing)
+   
+   Once downloaded, extract the contents directly into: `songs/TOWERING ABOVE THE REST/`. The application will automatically detect the folders and audio files.
 
 4. **Start the Development Server:**
    ```bash
